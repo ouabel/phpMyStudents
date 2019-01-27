@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
+	<h1>Student details <a class="btn btn-primary" href="{{ path('student_index') }}"><i class="fa fa-angle-left"></i></a></h1>
 	<p>First name: {{ student.firstName }}</p>
 	<p>Last name: {{ student.lastName }}</p>
 	<p>Student number: {{ student.NumEtud }}</p>
-
-<a href="{{ path('student_index') }}">Students list</a>
+</div>
 {% endblock %}
