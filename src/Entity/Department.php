@@ -5,10 +5,20 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use JMS\Serializer\Annotation\Exclude;
+use Hateoas\Configuration\Annotation as Hateoas;
 use App\Entity\Student;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DepartmentRepository")
+ * @Hateoas\Relation(
+ *      "students",
+ *      href = @Hateoas\Route(
+ *          "api_department_students",
+ *          parameters = { "id" = "expr(object.getId())" },
+ *          absolute = true
+ *      )
+ * )
  */
 class Department
 {
@@ -31,6 +41,7 @@ class Department
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Student", mappedBy="department", cascade={"remove"})
+     * @Exclude
      */
     private $students;
 

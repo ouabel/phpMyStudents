@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Department;
+use JMS\Serializer\Annotation\Exclude;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentRepository")
@@ -34,6 +35,7 @@ class Student
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Department", inversedBy="students")
+     * @Exclude
      */
     private $department;
 
