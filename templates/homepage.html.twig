@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<br>
+<div class="card">
+  <div class="card-header text-center">
+    phpMyStudents
+  </div>
+  <div class="card-body text-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+		<a class="btn btn-lg btn-dark" href="{{ path('student_index') }}">Students</a>
+		<a class="btn btn-lg btn-secondary" href="{{ path('department_index') }}">Departments</a>
+		<a class="btn btn-lg btn-light" href="{{ path('app.swagger_ui') }}">API doc</a>
+	</div>
+  </div>
+</div>
+
+</div>
+{% endblock %}
