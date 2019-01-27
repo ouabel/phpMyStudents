@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+	<h1>Edit department <a class="btn btn-primary" href="{{ path('department_index') }}"><i class="fa fa-angle-left"></i></a></h1>
+	{% include 'department/_form.html.twig' %}
+</div>
+{% endblock %}

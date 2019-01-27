@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+	<h1>Department details <a class="btn btn-primary" href="{{ path('department_index') }}"><i class="fa fa-angle-left"></i></a></h1>
+	<p>Name: {{ department.name }}</p>
+	<p>Capacity: {{ department.capacity }}</p>
+</div>
+{% endblock %}

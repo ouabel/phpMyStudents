@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+	<h1>List of departments <a class="btn btn-primary" href="{{ path('department_add') }}"><i class="fa fa-plus-circle"></i></a></h1>
+
+	<table class="table">
+		<thead class="thead-dark">
+	    <tr>
+	    	<th>Name</th>
+	    	<th>Capacity</th>
+	    	<th>Actions</th>
+	    </tr>
+		</thead>
+		<tbody>
+	    {% for department in departments %}
+	        <tr>
+	        	<td>{{ department.name }}</td>
+	        	<td>{{ department.capacity }}</td>
+	        	<td><div class="btn-group btn-group-toggle">
+	        		<a class="btn btn-info" href="{{ path('department_show', {'id': department.id}) }}"><i class="fa fa-eye"></i></a>
+	        		<a class="btn btn-primary" href="{{ path('department_edit', {'id': department.id}) }}"><i class="fa fa-pencil-alt"></i></a>
+	        		<a class="btn btn-danger" href="{{ path('department_delete', {'id': department.id}) }}"><i class="fa fa-trash"></i></a>
+	        	</div></td>
+	        </tr>
+	    {% endfor %}
+	    </tbody>
+	</table>
+</div>
+{% endblock %}
