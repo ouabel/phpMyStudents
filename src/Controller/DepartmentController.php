@@ -77,10 +77,12 @@ class DepartmentController
     /**
      * @Route("/show/{id}", name="department_show")
     */
-    public function show(int $id)
+    public function show(Department $department)
     {
-        $department = $this->departmentRepository->find($id);
-        $html = $this->twig->render('department/show.html.twig',[
+        if (!$department) {
+            throw $this->createNotFoundException('Department does not exist');
+        }
+                $html = $this->twig->render('department/show.html.twig',[
             'department' => $department
         ]);
         return new Response($html);
@@ -89,9 +91,11 @@ class DepartmentController
     /**
      * @Route("/edit/{id}", name="department_edit")
     */
-    public function edit(int $id, Request $request)
+    public function edit(Department $department, Request $request)
     {
-        $department = $this->departmentRepository->find($id);
+        if (!$department) {
+            throw $this->createNotFoundException('Department does not exist');
+        }
         $form = $this->formFactory->create(DepartmentType::class, $department);
         $form->handleRequest($request);
 
@@ -109,9 +113,11 @@ class DepartmentController
     /**
      * @Route("/delete/{id}", name="department_delete")
     */
-    public function delete(int $id)
+    public function delete(Department $department)
     {
-        $department = $this->departmentRepository->findOneBy(['id' => $id]);
+        if (!$department) {
+            throw $this->createNotFoundException('Department does not exist');
+        }
         $this->entityManager->remove($department);
         $this->entityManager->flush();
 

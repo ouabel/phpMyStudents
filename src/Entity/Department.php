@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -31,16 +32,27 @@ class Department
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 25,
+     *      maxMessage = "Name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer", length=10)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 10,
+     *      maxMessage = "Capacity cannot be longer than {{ limit }} characters"
+     * )
      */
     private $capacity;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Student", mappedBy="department", cascade={"remove"})
+     * @Assert\NotBlank
      * @Exclude
      */
     private $students;

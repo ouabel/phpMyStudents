@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Department;
 use JMS\Serializer\Annotation\Exclude;
@@ -20,21 +21,37 @@ class Student
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 25,
+     *      maxMessage = "First name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=25)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 25,
+     *      maxMessage = "Last name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="integer", length=10, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 10,
+     *      maxMessage = "Student number cannot be longer than {{ limit }} characters"
+     * )
      */
     private $numEtud;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Department", inversedBy="students")
+     * @Assert\NotBlank
      * @Exclude
      */
     private $department;

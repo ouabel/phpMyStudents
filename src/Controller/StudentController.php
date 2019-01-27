@@ -79,6 +79,9 @@ class StudentController
     */
     public function show(Student $student)
     {
+        if (!$student) {
+            throw $this->createNotFoundException('Student does not exist');
+        }
         $html = $this->twig->render('student/show.html.twig',[
             'student' => $student
         ]);
@@ -90,7 +93,9 @@ class StudentController
     */
     public function edit(Student $student, Request $request)
     {
-        $form = $this->formFactory->create(StudentType::class, $student);
+        if (!$student) {
+            throw $this->createNotFoundException('Student does not exist');
+        }        $form = $this->formFactory->create(StudentType::class, $student);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -103,11 +108,15 @@ class StudentController
         ]);
         return new Response($html);
     }
+
     /**
-     * @Route("delete/{id}", name="student_delete")
+     * @Route("/delete/{id}", name="student_delete")
     */
     public function delete(Student $student)
     {
+        if (!$student) {
+            throw $this->createNotFoundException('Student does not exist');
+        }
         $this->entityManager->remove($student);
         $this->entityManager->flush();
 
