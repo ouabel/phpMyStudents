@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<p>First name: {{ student.firstName }}</p>
+	<p>Last name: {{ student.lastName }}</p>
+	<p>Student number: {{ student.NumEtud }}</p>
+
+<a href="{{ path('student_index') }}">Students list</a>
+{% endblock %}

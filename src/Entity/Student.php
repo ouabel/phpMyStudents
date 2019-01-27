@@ -27,7 +27,7 @@ class Student
     private $lastName;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", length=10, unique=true)
      */
     private $numEtud;
 
