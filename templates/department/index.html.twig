@@ -9,6 +9,7 @@
 	    <tr>
 	    	<th>Name</th>
 	    	<th>Capacity</th>
+	    	<th>Number of students</th>
 	    	<th>Actions</th>
 	    </tr>
 		</thead>
@@ -17,6 +18,7 @@
 	        <tr>
 	        	<td>{{ department.name }}</td>
 	        	<td>{{ department.capacity }}</td>
+	        	<td>{{ department.students|length }}</td>
 	        	<td><div class="btn-group btn-group-toggle">
 	        		<a class="btn btn-info" href="{{ path('department_show', {'id': department.id}) }}"><i class="fa fa-eye"></i></a>
 	        		<a class="btn btn-primary" href="{{ path('department_edit', {'id': department.id}) }}"><i class="fa fa-pencil-alt"></i></a>

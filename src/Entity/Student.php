@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Department;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentRepository")
@@ -31,6 +32,11 @@ class Student
      */
     private $numEtud;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Department", inversedBy="students")
+     */
+    private $department;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +59,11 @@ class Student
         return $this->lastName;
     }
 
+    public function getDepartment(): ?Department
+    {
+        return $this->department;
+    }
+
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
@@ -70,5 +81,12 @@ class Student
         $this->numEtud = $numEtud;
 
         return $this;
+    }
+
+    public function setDepartment(?Department $department): self
+    {
+        $this->department = $department;
+
+        return $this;    
     }
 }

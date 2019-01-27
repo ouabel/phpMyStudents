@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use App\Entity\Student;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DepartmentRepository")
@@ -25,6 +28,16 @@ class Department
      * @ORM\Column(type="integer", length=10)
      */
     private $capacity;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Student", mappedBy="department", cascade={"remove"})
+     */
+    private $students;
+
+    public function __construct()
+    {
+        $this->students = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,5 +66,18 @@ class Department
         $this->capacity = $capacity;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Student[]
+     */
+    public function getStudents(): Collection
+    {
+        return $this->students;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

@@ -17,6 +17,7 @@ class StudentType extends AbstractType
 		$builder->add('firstName', TextType::class)
 				->add('lastName', TextType::class)
 				->add('NumEtud', NumberType::class)
+				->add('department')
 				->add('save', SubmitType::class);
 	}
 	public function configureOptions(OptionsResolver $resolver)

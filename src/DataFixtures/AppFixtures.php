@@ -30,6 +30,7 @@ class AppFixtures extends Fixture
 			$student->setFirstName('Jean ' . $i);
 			$student->setLastName('François ' . $i);
 			$student->setNumEtud((rand(1000000,9999999)) . $i);
+			$student->setDepartment($d[rand(0,count($d)-1)]);
 			$manager->persist($student);
 		}
 		$manager->flush();

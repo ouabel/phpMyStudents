@@ -10,6 +10,7 @@
 	    	<th>First name</th>
 	    	<th>Last name</th>
 	    	<th>Student number</th>
+	    	<th>Department</th>
 	    	<th>Actions</th>
 	    </tr>
 		</thead>
@@ -19,6 +20,7 @@
 	        	<td>{{ student.firstName }}</td>
 	        	<td>{{ student.lastName }}</td>
 	        	<td>{{ student.numEtud }}</td>
+	        	<td>{{ student.department }}</td>
 	        	<td><div class="btn-group btn-group-toggle">
 	        		<a class="btn btn-info" href="{{ path('student_show', {'id': student.id}) }}"><i class="fa fa-eye"></i></a>
 	        		<a class="btn btn-primary" href="{{ path('student_edit', {'id': student.id}) }}"><i class="fa fa-pencil-alt"></i></a>
